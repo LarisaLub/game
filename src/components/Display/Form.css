@@ -1,0 +1,25 @@
+.form{
+   
+  
+    overflow: hidden;
+}
+  .form .horiz>div{
+    display: inline-block;
+}
+    .mode{
+      
+     
+    }
+   .name{
+   
+     
+   }
+
+   .button{
+ 
+   }
+
+   .message{
+     margin-top: 200px;
+     margin-left: 200px;
+   }
