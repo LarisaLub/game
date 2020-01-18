@@ -1,25 +1,27 @@
-.form{
-   
+.flex_box{
+  justify-content: space-between;
+  flex-flow: wrap;
+  padding-top: 24px;
+  margin-left: 20px;
+  }
+
+.col{
   
-    overflow: hidden;
-}
-  .form .horiz>div{
-    display: inline-block;
-}
-    .mode{
-      
-     
-    }
-   .name{
-   
-     
-   }
+  width: 30%;
+  overflow: hidden;
+  
 
-   .button{
+  
+}
+
+
+.message{
+  margin: 130px 0 35px 200px;
+  width: 300px;
+
+ }
  
-   }
+  
 
-   .message{
-     margin-top: 200px;
-     margin-left: 200px;
-   }
+
+  

@@ -8,23 +8,25 @@ import './App.css';
 function App() {
   const [play, playAgain] = useState([])
   return (
-    <div className="main">
 
-      <div className="form">
-        <Form />
+    <div className="container flex_box">
+      <div class="col">
+        <div className="form">
+          <Form />
+        </div>
+
+
+        <div className="place-play">
+          <PlacePlay />
+        </div>
+
       </div>
 
-
-      <div className="flex-box">
-        <PlacePlay />
-      </div>
-
-
-
-      <div className="flex-box">
+      <div className="col">
         <Border />
       </div>
     </div>
+
 
 
 

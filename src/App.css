@@ -1,6 +1,13 @@
-
-.main{
+.flex_box{
   display: flex;
   justify-content: center;
-  flex-direction: column;
-}
+  flex-direction: row;
+  }
+
+.col{
+  width: 50%;
+  padding-top: 25px;
+  
+
+  }
+

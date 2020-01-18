@@ -1,0 +1,20 @@
+.col{
+    width: 50%;
+    padding-top: 24px;
+  
+    }
+
+    .border{
+        padding-top: 24px;
+        margin-left: 150px;
+
+    
+    }
+   .flex_box{
+    flex-direction: column;
+    justify-content: space-around;
+
+   
+   }
+
+  

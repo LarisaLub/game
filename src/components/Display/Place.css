@@ -1,6 +1,16 @@
 
- .flex-box{
-   display: flex;
-   width: 155px;
+.col{
+  width: 50%;
+  padding-top: 25px;
+
   }
+ .place-play{
+   width: 240px;
+   margin-left: 210px;
+  }
+  
+    .cell {
+      width: 45px;
+      height: 45px;
+    }
   
