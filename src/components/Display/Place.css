@@ -12,5 +12,12 @@
     .cell {
       width: 45px;
       height: 45px;
+
     }
-  
+
+  .red{
+ background: red;
+  }
+.blue{
+  background: blue;
+}

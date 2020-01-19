@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PlacePlay from "./components/Display/PlacePlay"
 import Border from "./components/BorderLeader/Border"
 import Form from "./components/Display/Form"
@@ -6,24 +6,35 @@ import Form from "./components/Display/Form"
 import './App.css';
 
 function App() {
-  const [play, playAgain] = useState([])
+  let interval
+  const [isStartGame, setStartGame] = useState(false)
+  const [listPosition, setListPosition] = useState({})
+  useEffect(() => {
+    if (isStartGame) {
+      interval = setInterval(() => {
+        const number = Math.floor(Math.random() * Math.floor(25))
+        console.log(number)
+        setListPosition({ ...listPosition, [number]: true })
+      }, 5000)
+    }
+  }, [isStartGame])
   return (
 
     <div className="container flex_box">
-      <div class="col">
+      <div className="col">
         <div className="form">
-          <Form />
+          <Form setStartGame={setStartGame} />
         </div>
 
 
         <div className="place-play">
-          <PlacePlay />
+          <PlacePlay listPosition={listPosition} />
         </div>
 
       </div>
 
       <div className="col">
-        <Border />
+        <Border users={[{ name: "тштф", date: "12.12.20" }]} />
       </div>
     </div>
 

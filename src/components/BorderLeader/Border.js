@@ -3,51 +3,25 @@ import PropTypes from 'prop-types'
 import "./Border.css";
 
 
-const Border = ({ handleClick, children }) => {
-    const test = [1, 2, 3, 4, 5]
+const Border = ({ users = [] }) => {
+
     return (
         <div className="border">
             <h3> Leader Board</h3>
-            {test.map(_ => <div>{_}</div>)}
-            <div class="container flex_box">
+
+            {users.map(user => (<div className="container flex_box" key={user}>
 
 
                 <div className="col">
-                    User Name
-                     </div>
+                    User Name: {user.name}
+                </div>
 
                 <div className="col">
-                    Date and Time
-                 </div>
+                    Date and Time:{user.date}
+                </div>
 
-                <div className="col">
-                    User Name
-                     </div>
 
-                <div className="col">
-                    Date and Time
-                 </div> <div className="col">
-                    User Name
-                     </div>
-
-                <div className="col">
-                    Date and Time
-                 </div>
-                <div className="col">
-                    User Name
-                     </div>
-
-                <div className="col">
-                    Date and Time
-                 </div>
-                <div className="col">
-                    User Name
-                     </div>
-
-                <div className="col">
-                    Date and Time
-                 </div>
-            </div>
+            </div>))}
 
         </div>
 
