@@ -1,24 +1,51 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 import './Place.css';
 
-const PlacePlay = ({ listPosition }) => {
-    const handleClick = () => { }
-    const values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
-    return (
-        <div className="operation-button-play">
-            {values.map(_ => {
-                const name = listPosition[_] ? " red" : " blue"
-                return <button className={`cell${name}`} key={_} onClick={() => handleClick(_)}></button>
-            })}
+const PlacePlay = ({ listPosition, result, setResult, currentResult }) => {
+	const _handleClick = (index) => {
+		if (!result[index] && currentResult === index) {
+			const newList = { ...result, [index]: true };
+			setResult(newList);
+		}
+	};
 
-        </div>
+	let cells = [];
+	for (let i = 0; cells.length < 25; i++) {
+		cells[i] = i;
+	}
 
-    )
-}
+	return (
+		<div className="operation-button-play">
+			{cells.map((_) => {
+				let statusName = '';
+				const status = result[_];
+				if (status) {
+					statusName = ' blue';
+				}
+				if (listPosition[_] && !result[_]) {
+					statusName = ' red';
+				}
+				if (currentResult === _ && !result[_]) {
+					statusName = ' green';
+				}
+				return (
+					<button
+						className={`cell${statusName}`}
+						key={_}
+						onClick={() => _handleClick(_)}
+					/>
+				);
+			})}
+		</div>
+	);
+};
 
 PlacePlay.propTypes = {
-    handleClick: PropTypes.func
-}
+	listPosition: PropTypes.object,
+	result: PropTypes.object,
+	setResult: PropTypes.func,
+	currentResult: PropTypes.number
+};
 
-export default PlacePlay
+export default PlacePlay;

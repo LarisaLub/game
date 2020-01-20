@@ -1,48 +1,102 @@
-import React, { useState, useEffect } from 'react';
-import PlacePlay from "./components/Display/PlacePlay"
-import Border from "./components/BorderLeader/Border"
-import Form from "./components/Display/Form"
+import React, { useState, useEffect, useRef } from 'react';
+import PlacePlay from './components/Display/PlacePlay';
+import Border from './components/BorderLeader/Border';
+import Form from './components/Display/Form';
+import random from './utils/random';
 
 import './App.css';
 
 function App() {
-  let interval
-  const [isStartGame, setStartGame] = useState(false)
-  const [listPosition, setListPosition] = useState({})
-  useEffect(() => {
-    if (isStartGame) {
-      interval = setInterval(() => {
-        const number = Math.floor(Math.random() * Math.floor(25))
-        console.log(number)
-        setListPosition({ ...listPosition, [number]: true })
-      }, 5000)
-    }
-  }, [isStartGame])
-  return (
+	const timer = useRef(false);
+	const [ mode, setMode ] = useState(0);
+	const [ users, setUsers ] = useState([]);
+	const [ isStartGame, setStartGame ] = useState(false);
+	const [ listPosition, setListPosition ] = useState({});
+	const [ result, setResult ] = useState({});
+	const [ currentResult, setCurrentResult ] = useState(null);
 
-    <div className="container flex_box">
-      <div className="col">
-        <div className="form">
-          <Form setStartGame={setStartGame} />
-        </div>
+	const _clearResult = () => {
+		setListPosition({});
+		setResult({});
+	};
 
+	useEffect(
+		() => {
+			const total = Object.keys(listPosition).length;
+			if (isStartGame && total < 25) {
+				timer.current = setTimeout(
+					(list) => {
+						const index = random(list);
+						setCurrentResult(index);
+						const newList = { ...list, [index]: true };
+						setListPosition(newList);
+					},
+					(3 - mode * 0.5) * 1000,
+					listPosition
+				);
+				return;
+			}
+		},
+		[ isStartGame, listPosition ]
+	);
+	useEffect(
+		() => {
+			const total = Object.keys(listPosition).length;
+			if (total === 25) {
+				setListPosition({});
+				setResult({});
+				let newUserData = users.slice(0, users.length);
+				let index;
+				newUserData.forEach((_, i) => {
+					if (_.status === 'start') {
+						index = i;
+					}
+				});
+				for (let key in result) {
+					if (result[key]) {
+						newUserData[index].points += newUserData[index].mode;
+					}
+				}
+				newUserData[index].status = 'end';
+				setUsers([ ...newUserData ]);
+				setStartGame(false);
+				setCurrentResult(null);
+			}
+		},
+		[ listPosition, users ]
+	);
+	useEffect(() => window.clearInterval(timer.current), []);
+	return (
+		<div className="container flex_box">
+			<div className="col">
+				<div className="form">
+					<Form
+						isStartGame={isStartGame}
+						setStartGame={setStartGame}
+						setUsers={setUsers}
+						mode={mode}
+						setMode={setMode}
+						users={users}
+						clearResult={_clearResult}
+					/>
+				</div>
 
-        <div className="place-play">
-          <PlacePlay listPosition={listPosition} />
-        </div>
+				<div className="place-play">
+					<PlacePlay
+						listPosition={listPosition}
+						setListPosition={setListPosition}
+						result={result}
+						setResult={setResult}
+						currentResult={currentResult}
+					/>
+				</div>
+			</div>
 
-      </div>
-
-      <div className="col">
-        <Border users={[{ name: "тштф", date: "12.12.20" }]} />
-      </div>
-    </div>
-
-
-
-
-
-  );
+			<div className="col">
+				<Border users={users} />
+			</div>
+		</div>
+	);
 }
 
 export default App;

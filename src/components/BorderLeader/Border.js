@@ -1,38 +1,32 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import "./Border.css";
+import React from 'react';
+import PropTypes from 'prop-types';
+import getDate from '../../utils/getDate';
+import './Border.css';
 
+const Border = ({ users }) => {
+	return (
+		<div className="border">
+			<h3> Leader Board</h3>
+			{users
+				.sort((a, b) => b['points'] - a['points'])
+				.map(({ name, date, points, status }, index) => {
+					const time = getDate(date);
+					return (
+						<div className="container flex_box" key={index}>
+							<div className="col">
+								User Name: {name} {status === 'end' ? `(${points})` : ''}
+							</div>
 
-const Border = ({ users = [] }) => {
-
-    return (
-        <div className="border">
-            <h3> Leader Board</h3>
-
-            {users.map(user => (<div className="container flex_box" key={user}>
-
-
-                <div className="col">
-                    User Name: {user.name}
-                </div>
-
-                <div className="col">
-                    Date and Time:{user.date}
-                </div>
-
-
-            </div>))}
-
-        </div>
-
-
-
-
-    )
-}
+							<div className="col">Date and Time:{time}</div>
+						</div>
+					);
+				})}
+		</div>
+	);
+};
 
 Border.propTypes = {
-    handleClick: PropTypes.func
-}
+	users: PropTypes.array
+};
 
-export default Border
+export default Border;

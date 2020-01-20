@@ -1,23 +1,23 @@
+.col {
+	width: 50%;
+	padding-top: 25px;
+}
+.place-play {
+	width: 240px;
+	margin-left: 210px;
+}
 
-.col{
-  width: 50%;
-  padding-top: 25px;
+.cell {
+	width: 45px;
+	height: 45px;
+}
 
-  }
- .place-play{
-   width: 240px;
-   margin-left: 210px;
-  }
-  
-    .cell {
-      width: 45px;
-      height: 45px;
-
-    }
-
-  .red{
- background: red;
-  }
-.blue{
-  background: blue;
+.red {
+	background: red;
+}
+.blue {
+	background: blue;
+}
+.green {
+	background: green;
 }
