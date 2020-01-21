@@ -1,21 +1,26 @@
-.col{
+.flex_box{
+    flex-direction: column;
+    justify-content: space-around;
+     }
+
+    .col{
     width: 50%;
     padding-top: 24px;
-  
     }
 
     .border{
-        padding-top: 24px;
-        margin-left: 150px;
+        margin: 50px 30px 0 50px; 
+        width: 550px;
+             }
 
-    
-    }
-   .flex_box{
-    flex-direction: column;
-    justify-content: space-around;
-  
-
+     .border h3{
+     margin-left: 150px;
+     font-size:25px;
+     }
+ 
+  .line{
+    background: lightgray;
+    width: 520px;
+    text-align: center;
    
-   }
-
-  
+  }

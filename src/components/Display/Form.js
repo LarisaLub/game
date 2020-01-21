@@ -11,7 +11,7 @@ const Form = ({
 	mode,
 	setMode
 }) => {
-	const [ userName, setUserName ] = useState('');
+	const [userName, setUserName] = useState('');
 	const _hadleSubmit = (evt) => {
 		evt.preventDefault();
 		setStartGame(true);
@@ -40,9 +40,9 @@ const Form = ({
 	return (
 		<div className="form">
 			<form onSubmit={_hadleSubmit}>
-				<select id="mode" name="gameMode" defaultValue="" onChange={_handleChangeMode}>
-					<option value="" disabled>
-						Pick game mode"
+				<select className="gamemode" id="mode" name="gameMode" defaultValue="" onChange={_handleChangeMode}>
+					<option id="option" value="" disabled>
+						Pick game mode
 					</option>
 					<option value="1">1</option>
 					<option value="2">2</option>
@@ -57,7 +57,7 @@ const Form = ({
 					name="name"
 					placeholder="Enter your name"
 				/>
-				<button type="submit" disabled={!userName || isStartGame || !mode}>
+				<button className="play" type="submit" disabled={!userName || isStartGame || !mode}>
 					PLAY
 				</button>
 			</form>

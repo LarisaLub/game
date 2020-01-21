@@ -13,11 +13,14 @@ const Border = ({ users }) => {
 					const time = getDate(date);
 					return (
 						<div className="container flex_box" key={index}>
-							<div className="col">
-								User Name: {name} {status === 'end' ? `(${points})` : ''}
+							<div className="line">
+								<div className="col" >
+									User Name: {name} {status === 'end' ? `(${points})` : ''}
+								</div>
 							</div>
-
-							<div className="col">Date and Time:{time}</div>
+							<div className="line">
+								<div className="col">Date and Time:{time}</div>
+							</div>
 						</div>
 					);
 				})}

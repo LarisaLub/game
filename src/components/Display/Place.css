@@ -1,8 +1,9 @@
 .col {
 	width: 50%;
-	padding-top: 25px;
+	
 }
 .place-play {
+	margin-top: 50px;
 	width: 240px;
 	margin-left: 210px;
 }
