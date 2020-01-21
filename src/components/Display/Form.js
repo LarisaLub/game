@@ -62,7 +62,7 @@ const Form = ({
 				</button>
 			</form>
 			<div className="message">
-				<p> Message here </p>
+				<p> Message here  </p>
 			</div>
 		</div>
 	);

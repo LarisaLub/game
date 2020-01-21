@@ -21,13 +21,13 @@ const PlacePlay = ({ listPosition, result, setResult, currentResult }) => {
 				let statusName = '';
 				const status = result[_];
 				if (status) {
-					statusName = ' blue';
+					statusName = ' green'
 				}
 				if (listPosition[_] && !result[_]) {
 					statusName = ' red';
 				}
 				if (currentResult === _ && !result[_]) {
-					statusName = ' green';
+					statusName = ' blue';
 				}
 				return (
 					<button
